@@ -1,0 +1,22 @@
+{
+  "name": "pricePigeon",
+  "version": "0.0.1",
+  "description": "Fetch AWS on-demapnd prices for easy import into other modules",
+  "main": "index.json",
+  "scripts": {
+    "update": "bin/update.js",
+    "test": "tape test/*.js"
+  },
+  "bin": {
+    "update": "bin/update.js"
+  },
+  "author": "Mapbox",
+  "dependencies": {
+    "fs": "0.0.2",
+    "request": "^2.72.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "tape": "^4.5.1"
+  }
+}

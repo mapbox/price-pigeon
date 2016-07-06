@@ -12,7 +12,20 @@ var output = 'mapping.json';
         // https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/index.json
 
 var priceURL = 'https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/index.json';
-var map = {};
+var map = {
+        'us-east-1': {},
+    'us-west-1': {},
+    'us-west-2': {},
+    'ap-south-1': {},
+    'ap-northeast-2': {},
+    'ap-southeast-1': {},
+    'ap-southeast-2': {},
+    'ap-northeast-1': {},
+    'eu-central-1': {},
+    'eu-west-1': {},
+    'sa-east-1': {}
+};
+
 var regions = {
     'US East (N. Virginia)': 'us-east-1',
     'US West (N. California)': 'us-west-1',
@@ -30,12 +43,7 @@ var regions = {
 console.log('requesting...');
 
 // read save api response to save time during developement
-// fs.readFile('./apiResponse.json', parseResponse);
 fs.readFile('./apiResponse.json', function (err, buffer) {
-    // console.log('err:', err);
-    // console.log('buffer:', buffer);
-    // var response = JSON.parse(buffer);
-    // console.log('response:', response);
     if (err) {
         console.log('err w/file read');
         return;
@@ -78,8 +86,7 @@ function parseResponse(bufferResponse) {
                 // mapping[region][instanceType] = {'sku': sku};
         }
     });
-    // loop through each sku, add 'price': price, 'unit': unit
-    // response.terms.onDemand
+    // get price for each instance object
     _.each(mapping, function(instance) {
         var instanceSKU = instance['sku'];
         var price = getPrice(response, instanceSKU);
@@ -88,13 +95,6 @@ function parseResponse(bufferResponse) {
 
     // var testPrice = getPrice(response, '4APTB9YMQM9QTQK3');
     // console.log('testPrice:', JSON.stringify(testPrice, null, 2));
-
-
-    // loop through each instance, replace sku with price for that sku
-    // get list of keys (regions) loop through regions, get list of keys/instances, loop through instances
-    // use value of instance (sku) to look up price, replace sku with price
-    // _.each(mapping[region])
-
 
     console.log('mapping:', mapping);
     return mapping;
@@ -120,23 +120,10 @@ function getPrice(response, sku) {
 }
 
 
-// for each item in products, if operating system and if os===linux,
-// add region to master list, add instance type+sku to region
-
-// for each region, for each item in regions, get price for sku and add
-
-
-
-    // request https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/index.json
-        // get SKUs for instances in correct regions, with correct operating systems
-            // get price within that file using SKU
-
             // need: sku, attributes: location, instanceType, operatingSystem
                 // check that it has these attrs...
                     // ...because some things don't have operating systems: "productFamily" : "IP Address", "Data Transfer", "Dedicated Host", etc
                 // list/dictionary of excluded regions, families, types?
-
-// need lookup table for region codes >:(
 
 // save results in mapping.json
 

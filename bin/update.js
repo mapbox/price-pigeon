@@ -32,6 +32,7 @@ fs.readFile('./apiResponse.json', function (err, buffer) {
 // });
 
 // Parses API response into legible object
+module.exports.parseResponse = parseResponse;
 function parseResponse(response) {
     var mapping = {};
 
@@ -72,6 +73,7 @@ function parseResponse(response) {
 }
 
 // uses SKU to get price from response. Returns undefined if no terms for OnDemand
+module.exports.getPrice = getPrice;
 function getPrice(response, sku) {
     var price;
     var terms = response.terms.OnDemand[sku];
@@ -87,6 +89,7 @@ function getPrice(response, sku) {
 }
 
 // Changes region name to correct format, reorders instances by region
+module.exports.formatMap = formatMap;
 function formatMap(mapping) {
 
     // base to add instances to

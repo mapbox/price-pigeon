@@ -1,7 +1,7 @@
 {
   "name": "pricePigeon",
   "version": "0.0.1",
-  "description": "Fetch AWS on-demapnd prices for easy import into other modules",
+  "description": "Fetch AWS OnDemand prices for easy import into other modules",
   "main": "index.json",
   "scripts": {
     "update": "bin/update.js",

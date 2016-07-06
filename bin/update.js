@@ -5,60 +5,48 @@ var request = require('request');
 var _ = require('underscore');
 var output = 'mapping.json';
 
-// make api call
-
-    // (probably skip this, always looking for EC2s) get offer code for ec2s from Offer Index
-        // response['offers']['AmazonEC2'][]
-        // https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/index.json
-
 var priceURL = 'https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/index.json';
 
+console.log('requesting price data from AWS...');
 
-console.log('requesting...');
-
-// read save api response to save time during developement
+// read saved api response during developement
 fs.readFile('./apiResponse.json', function (err, buffer) {
     if (err) {
         console.log('err w/file read');
         return;
     } else {
-        parseResponse(buffer);
+        var response = JSON.parse(buffer);
+        parseResponse(response);
     }
 });
 
-// Get API response
+// // Get API response
 // request(priceURL, function (error, response, body) {
 //     console.log('got response');
 //     if (error) {
 //         console.log('Error requesting priceURL:', error);
 //     } else {
 //         var info = JSON.parse(response.body);
-//         map = parseResponse(info);
+//         parseResponse(info);
 //     };
-
 // });
 
 // Parses API response into legible object
-function parseResponse(bufferResponse) {
-    var response = JSON.parse(bufferResponse);
+function parseResponse(response) {
     var mapping = {};
 
     // get product details
     _.each(response.products, function(product) {
         // only get Linux products for now
         if (product.productFamily === 'Compute Instance' && product.attributes.operatingSystem === 'Linux') {
-                var region = product.attributes.location;
-                var instanceType = product.attributes.instanceType;
-                var sku = product.sku;
-                mapping[sku] = {
-                    'sku': sku,
-                    'region': region,
-                    'instanceType': instanceType
-                };
-                // if (!mapping[region]) {
-                //     mapping[region] = {};
-                // }
-                // mapping[region][instanceType] = {'sku': sku};
+            var region = product.attributes.location;
+            var instanceType = product.attributes.instanceType;
+            var sku = product.sku;
+            mapping[sku] = {
+                'sku': sku,
+                'region': region,
+                'instanceType': instanceType
+            };
         }
     });
 
@@ -66,32 +54,24 @@ function parseResponse(bufferResponse) {
     _.each(mapping, function(instance) {
         var instanceSKU = instance['sku'];
         var price = getPrice(response, instanceSKU);
-        instance['price'] = price;
+        if (price === undefined) {
+            // delete listings of instances not available OnDemand
+            delete mapping[instanceSKU];
+        } else {
+            instance['price'] = price;
+        };
     });
-
-    // var testPrice = getPrice(response, '4APTB9YMQM9QTQK3');
-    // console.log('testPrice:', JSON.stringify(testPrice, null, 2));
 
     var finalMap = formatMap(mapping);
 
-    console.log('finalMap:', finalMap);
-    return finalMap;
+    // write updated map to file
+    fs.writeFile('mapping.json', JSON.stringify(finalMap, null, 2), function(err) {
+        if (err) return console.log(err);
+        console.log('Updated mapping.json');
+    });
 }
 
-// function getInfo(response, product) {
-//     var region = product.attributes.location;
-//     var instanceType = product.attributes.instanceType;
-//     var sku = product.sku;
-
-//     var info = {
-//         'sku': sku,
-//         'region': region,
-//         'instanceType': instanceType
-//     };
-//     return info;
-// }
-
-// uses SKU to get price from response. Complicated because of json structure.
+// uses SKU to get price from response. Returns undefined if no terms for OnDemand
 function getPrice(response, sku) {
     var price;
     var terms = response.terms.OnDemand[sku];
@@ -102,40 +82,16 @@ function getPrice(response, sku) {
 
         var priceString = terms[skuOTC].priceDimensions[skuRC].pricePerUnit.USD;
         var price = parseFloat(priceString);
-    } else {
-        // return price undefined if OnDemand not available
-        console.log('not OnDemand:', sku, terms, price);
     };
-
     return price;
 }
 
-
-    // current:
-    // YJ2E4JTYGN2FMNQM: {
-    //     sku: 'YJ2E4JTYGN2FMNQM',
-    //     region: 'Asia Pacific (Tokyo)',
-    //     instanceType: 'cc2.8xlarge',
-    //     price: 2.349
-    // },
-
-    // desired:
-    // {
-    //   "us-east-1": {
-    //     "m3.xlarge": 0.27,
-    //     "m3.2xlarge": 2.09
-    //   },
-    //   "us-west-1": {
-    //     "m3.xlarge": 0.21,
-    //     "m3.2xlarge": 0.01
-    //   }
-    // }
-
-
+// Changes region name to correct format, reorders instances by region
 function formatMap(mapping) {
-    // takes in flat json, turns into neatly nested map
+
+    // base to add instances to
     var map = {
-            'us-east-1': {},
+        'us-east-1': {},
         'us-west-1': {},
         'us-west-2': {},
         'us-gov-west-1': {},
@@ -149,6 +105,7 @@ function formatMap(mapping) {
         'sa-east-1': {}
     };
 
+    // lookup table for different region names
     var regions = {
         'US East (N. Virginia)': 'us-east-1',
         'US West (N. California)': 'us-west-1',
@@ -167,15 +124,14 @@ function formatMap(mapping) {
 
     _.each(mapping, function (instance) {
         var instanceRegion = regions[instance.region];
-        console.log('old region:', instance.region);
-        console.log('new region:', instanceRegion);
-        // console.log(instance);
         map[instanceRegion][instance.instanceType] = instance.price;
     });
 
     return map;
 }
 
+
+// Notes
 
             // need: sku, attributes: location, instanceType, operatingSystem
                 // check that it has these attrs...
@@ -185,4 +141,17 @@ function formatMap(mapping) {
 // save results in mapping.json
 
 
+
+// function getInfo(response, product) {
+//     var region = product.attributes.location;
+//     var instanceType = product.attributes.instanceType;
+//     var sku = product.sku;
+
+//     var info = {
+//         'sku': sku,
+//         'region': region,
+//         'instanceType': instanceType
+//     };
+//     return info;
+// }
 

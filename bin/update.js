@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
+var _ = require('underscore');
 var fs = require('fs');
 var request = require('request');
-var _ = require('underscore');
-var output = 'mapping.json';
 
+var output = 'mapping.json';
 
 if (!module.parent) {
     getResponse(null, null, function(err, res) {
@@ -13,20 +13,19 @@ if (!module.parent) {
     });
 }
 
-// Mak API call or read from file
+// Make API call or read from file
 module.exports.getResponse = getResponse;
 function getResponse(method, address, callback) {
     var response;
     method = method || 'url';
     address = address || 'https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/index.json';
 
-    // // comment in for developement
+    // // comment in to use saved api response for developement
     // method = 'file';
     // address =  './apiResponse.json';
-    // address = './test/fixtures/response.test.json';
 
-    if (method === 'url' && address) {
-        // // Get API response
+    if (method === 'url') {
+        // Get API response
         console.log('requesting price data from AWS...');
         request(address, function(error, response, body) {
             if (error) {
@@ -36,7 +35,7 @@ function getResponse(method, address, callback) {
                 createMapping(response, output, callback);
             };
         });
-    } else if (method === 'file' && address) {
+    } else if (method === 'file') {
         // read saved api response from file
         console.log('reading response from file...');
         fs.readFile(address, function(err, buffer) {
@@ -52,6 +51,7 @@ function getResponse(method, address, callback) {
     };
 };
 
+// main function; takes api response and writes mapping to file
 module.exports.createMapping = createMapping;
 function createMapping(response, output, callback) {
     var parsedResponse = parseResponse(response);
@@ -133,7 +133,7 @@ function formatMap(parsedResponse) {
         'sa-east-1': {}
     };
 
-    // lookup table for different region names
+    // region name conversion table
     var regions = {
         'US East (N. Virginia)': 'us-east-1',
         'US West (N. California)': 'us-west-1',
@@ -158,28 +158,25 @@ function formatMap(parsedResponse) {
     return mapping;
 }
 
+/*
+Notes
 
-// Notes
-
-            // need: sku, attributes: location, instanceType, operatingSystem
-                // check that it has these attrs...
-                    // ...because some things don't have operating systems: "productFamily" : "IP Address", "Data Transfer", "Dedicated Host", etc
-                // list/dictionary of excluded regions, families, types?
-
-// save results in mapping.json
+need: sku, attributes: location, instanceType, operatingSystem
+    check that it has these attrs...
+        ...because some things don't have operating systems: "productFamily" : "IP Address", "Data Transfer", "Dedicated Host", etc
+    list/dictionary of excluded regions, families, types?
 
 
+function getInfo(response, product) {
+    var region = product.attributes.location;
+    var instanceType = product.attributes.instanceType;
+    var sku = product.sku;
 
-// function getInfo(response, product) {
-//     var region = product.attributes.location;
-//     var instanceType = product.attributes.instanceType;
-//     var sku = product.sku;
-
-//     var info = {
-//         'sku': sku,
-//         'region': region,
-//         'instanceType': instanceType
-//     };
-//     return info;
-// }
-
+    var info = {
+        'sku': sku,
+        'region': region,
+        'instanceType': instanceType
+    };
+    return info;
+}
+*/

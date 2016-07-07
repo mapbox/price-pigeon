@@ -1,8 +1,10 @@
+var _ = require('underscore');
 var fs = require('fs');
 var tape = require('tape');
-var _ = require('underscore');
+
 var update = require('../bin/update.js');
 
+// make a mapping from file input
 tape('getResponse succeeds', function(assert) {
     var method = 'file';
     var address = './apiResponse.json';
@@ -14,6 +16,7 @@ tape('getResponse succeeds', function(assert) {
     });
 });
 
+// fail correctly with bad input
 tape('getResponse fails', function(assert) {
     update.getResponse('nope', 'fake', function(err, res) {
         if (err) var hasError = true;
@@ -22,7 +25,7 @@ tape('getResponse fails', function(assert) {
     });
 });
 
-// updates mapping.json
+// update mapping.json
 tape('createMapping', function(assert) {
     var response = JSON.stringify(require('./fixtures/response.test.json'));
     var output = '/tmp/test.json';

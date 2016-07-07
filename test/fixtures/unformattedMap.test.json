@@ -1,0 +1,12 @@
+{ 
+  "KXFXRWTJMG3UXJFE": 
+   { "sku": "KXFXRWTJMG3UXJFE",
+     "region": "Asia Pacific (Mumbai)",
+     "instanceType": "m4.2xlarge",
+     "price": 0.743 },
+  "RDXNGJU5DRW4G5ZK": 
+   { "sku": "RDXNGJU5DRW4G5ZK",
+     "region": "South America (Sao Paulo)",
+     "instanceType": "c3.large",
+     "price": 0 }
+ }

@@ -10,15 +10,16 @@ var priceURL = 'https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC
 console.log('requesting price data from AWS...');
 
 // read saved api response during developement
-fs.readFile('./apiResponse.json', function (err, buffer) {
-    if (err) {
-        console.log('err w/file read');
-        return;
-    } else {
-        var response = JSON.parse(buffer);
-        parseResponse(response);
-    }
-});
+// fs.readFile('./apiResponse.json', function (err, buffer) {
+// fs.readFile('../test/fixtures/response.test.json', function (err, buffer) {
+//     if (err) {
+//         console.log('err w/file read', err);
+//         return;
+//     } else {
+//         var response = JSON.parse(buffer);
+//         parseResponse(response);
+//     }
+// });
 
 // // Get API response
 // request(priceURL, function (error, response, body) {
@@ -62,7 +63,6 @@ function parseResponse(response) {
             instance['price'] = price;
         };
     });
-
     var finalMap = formatMap(mapping);
 
     // write updated map to file

@@ -2,30 +2,40 @@
 
 var fs = require('fs');
 var request = require('request');
+// var queue = require('queue-async');
 var _ = require('underscore');
 var output = 'mapping.json';
 
 
 if (!module.parent) {
-    getResponse();
+    getResponse(null, null, function(err, res) {
+        if (err) throw err;
+        if (res) console.log(res);
+    });
 }
 
-// whole thing in function, can take 'url' or 'file', then path
+// Mak API call or read from file
 module.exports.getResponse = getResponse;
-function getResponse(method, address) {
+function getResponse(method, address, callback) {
 
     method = method || 'url';
     address = address || 'https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/index.json';
+
+    // comment in for developement
+    method = 'file';
+    address =  './apiResponse.json';
+    var response;
 
     if (method === 'url' && address) {
         // // Get API response
         console.log('requesting price data from AWS...');
         request(address, function (error, response, body) {
             if (error) {
-                console.log('Error requesting priceURL:', error);
+                // console.log('Error requesting priceURL:', error);
+                throw err;
             } else {
-                var info = JSON.parse(response.body);
-                parseResponse(info);
+                response = response.body;
+                createMapping(response, callback);
             };
         });
     } else if (method === 'file' && address) {
@@ -33,25 +43,38 @@ function getResponse(method, address) {
         console.log('reading response from file...');
         fs.readFile(address, function (err, buffer) {
             if (err) {
-                console.log('err w/file read', err);
-                return;
+                throw err;
             } else {
-                var response = JSON.parse(buffer);
-                parseResponse(response);
+                response = buffer;
+                createMapping(response, callback);
+
             }
         });
     } else {
-        console.log('getResponse takes 2 parameters: \'file\' or \'url\', and a path or address.');
+        return callback('getResponse takes 3 parameters: \'file\' or \'url\', a path or address, and a callback.');
     };
+
+};
+
+ function createMapping(response, callback) {
+    var parsedResponse = parseResponse(response);
+    var mapping = formatMap(parsedResponse);
+    var output = 'mapping.json';
+
+    fs.writeFile(output, JSON.stringify(mapping, null, 2), function(err, callback) {
+        if (err) callback(err);
+    });
+    return callback(null, 'Success - updated ' + output + '!');
 };
 
 // Parses API response into legible object
 module.exports.parseResponse = parseResponse;
 function parseResponse(response) {
+    var info = JSON.parse(response);
     var mapping = {};
 
     // get product details
-    _.each(response.products, function(product) {
+    _.each(info.products, function(product) {
         // only get Linux products for now
         if (product.productFamily === 'Compute Instance' && product.attributes.operatingSystem === 'Linux') {
             var region = product.attributes.location;
@@ -68,7 +91,7 @@ function parseResponse(response) {
     // get price for each instance object
     _.each(mapping, function(instance) {
         var instanceSKU = instance['sku'];
-        var price = getPrice(response, instanceSKU);
+        var price = getPrice(info, instanceSKU);
         if (price === undefined) {
             // delete listings of instances not available OnDemand
             delete mapping[instanceSKU];
@@ -76,13 +99,8 @@ function parseResponse(response) {
             instance['price'] = price;
         };
     });
-    var finalMap = formatMap(mapping);
 
-    // write updated map to file
-    fs.writeFile('mapping.json', JSON.stringify(finalMap, null, 2), function(err) {
-        if (err) return console.log(err);
-        console.log('Updated mapping.json');
-    });
+    return mapping;
 }
 
 // uses SKU to get price from response. Returns undefined if no terms for OnDemand

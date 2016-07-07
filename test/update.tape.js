@@ -12,11 +12,12 @@ var update = require('../bin/update.js');
 
 // make a very simple fake response fixture
 
-// tape('getResponse', function(assert) {
-//     var method = 'file';
-//     var address = './fixtures/response.test.json';
-    
-// })
+tape.skip('getResponse', function(assert) {
+    var method = 'file';
+    var address = './fixtures/response.test.json';
+
+    assert.end();
+})
 
 
     // get a price

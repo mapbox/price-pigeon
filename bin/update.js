@@ -5,32 +5,45 @@ var request = require('request');
 var _ = require('underscore');
 var output = 'mapping.json';
 
-var priceURL = 'https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/index.json';
 
-console.log('requesting price data from AWS...');
+if (!module.parent) {
+    getResponse();
+}
 
-// read saved api response during developement
-// fs.readFile('./apiResponse.json', function (err, buffer) {
-// fs.readFile('../test/fixtures/response.test.json', function (err, buffer) {
-//     if (err) {
-//         console.log('err w/file read', err);
-//         return;
-//     } else {
-//         var response = JSON.parse(buffer);
-//         parseResponse(response);
-//     }
-// });
+// whole thing in function, can take 'url' or 'file', then path
+module.exports.getResponse = getResponse;
+function getResponse(method, address) {
 
-// // Get API response
-// request(priceURL, function (error, response, body) {
-//     console.log('got response');
-//     if (error) {
-//         console.log('Error requesting priceURL:', error);
-//     } else {
-//         var info = JSON.parse(response.body);
-//         parseResponse(info);
-//     };
-// });
+    method = method || 'url';
+    address = address || 'https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/index.json';
+
+    if (method === 'url' && address) {
+        // // Get API response
+        console.log('requesting price data from AWS...');
+        request(address, function (error, response, body) {
+            if (error) {
+                console.log('Error requesting priceURL:', error);
+            } else {
+                var info = JSON.parse(response.body);
+                parseResponse(info);
+            };
+        });
+    } else if (method === 'file' && address) {
+        // read saved api response from file
+        console.log('reading response from file...');
+        fs.readFile(address, function (err, buffer) {
+            if (err) {
+                console.log('err w/file read', err);
+                return;
+            } else {
+                var response = JSON.parse(buffer);
+                parseResponse(response);
+            }
+        });
+    } else {
+        console.log('getResponse takes 2 parameters: \'file\' or \'url\', and a path or address.');
+    };
+};
 
 // Parses API response into legible object
 module.exports.parseResponse = parseResponse;

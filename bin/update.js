@@ -2,7 +2,6 @@
 
 var fs = require('fs');
 var request = require('request');
-// var queue = require('queue-async');
 var _ = require('underscore');
 var output = 'mapping.json';
 
@@ -17,53 +16,48 @@ if (!module.parent) {
 // Mak API call or read from file
 module.exports.getResponse = getResponse;
 function getResponse(method, address, callback) {
-
+    var response;
     method = method || 'url';
     address = address || 'https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/index.json';
 
-    // comment in for developement
-    method = 'file';
-    address =  './apiResponse.json';
-    var response;
+    // // comment in for developement
+    // method = 'file';
+    // address =  './apiResponse.json';
+    // address = './test/fixtures/response.test.json';
 
     if (method === 'url' && address) {
         // // Get API response
         console.log('requesting price data from AWS...');
-        request(address, function (error, response, body) {
+        request(address, function(error, response, body) {
             if (error) {
-                // console.log('Error requesting priceURL:', error);
                 throw err;
             } else {
                 response = response.body;
-                createMapping(response, callback);
+                createMapping(response, output, callback);
             };
         });
     } else if (method === 'file' && address) {
         // read saved api response from file
         console.log('reading response from file...');
-        fs.readFile(address, function (err, buffer) {
+        fs.readFile(address, function(err, buffer) {
             if (err) {
                 throw err;
             } else {
                 response = buffer;
-                createMapping(response, callback);
-
-            }
+                createMapping(response, output, callback);
+            };
         });
     } else {
         return callback('getResponse takes 3 parameters: \'file\' or \'url\', a path or address, and a callback.');
     };
-
 };
 
- function createMapping(response, callback) {
+module.exports.createMapping = createMapping;
+function createMapping(response, output, callback) {
     var parsedResponse = parseResponse(response);
     var mapping = formatMap(parsedResponse);
-    var output = 'mapping.json';
 
-    fs.writeFile(output, JSON.stringify(mapping, null, 2), function(err, callback) {
-        if (err) callback(err);
-    });
+    fs.writeFileSync(output, JSON.stringify(mapping, null, 2));
     return callback(null, 'Success - updated ' + output + '!');
 };
 
@@ -105,9 +99,9 @@ function parseResponse(response) {
 
 // uses SKU to get price from response. Returns undefined if no terms for OnDemand
 module.exports.getPrice = getPrice;
-function getPrice(response, sku) {
+function getPrice(info, sku) {
     var price;
-    var terms = response.terms.OnDemand[sku];
+    var terms = info.terms.OnDemand[sku];
     if (terms) {
         // get weird AWS codes
         var skuOTC = Object.keys(terms)[0];
@@ -121,10 +115,10 @@ function getPrice(response, sku) {
 
 // Changes region name to correct format, reorders instances by region
 module.exports.formatMap = formatMap;
-function formatMap(mapping) {
+function formatMap(parsedResponse) {
 
     // base to add instances to
-    var map = {
+    var mapping = {
         'us-east-1': {},
         'us-west-1': {},
         'us-west-2': {},
@@ -156,12 +150,12 @@ function formatMap(mapping) {
         'South America (Sao Paulo)': 'sa-east-1'
     };
 
-    _.each(mapping, function (instance) {
+    _.each(parsedResponse, function(instance) {
         var instanceRegion = regions[instance.region];
-        map[instanceRegion][instance.instanceType] = instance.price;
+        mapping[instanceRegion][instance.instanceType] = instance.price;
     });
 
-    return map;
+    return mapping;
 }
 
 

@@ -1,26 +1,41 @@
 var fs = require('fs');
 var tape = require('tape');
 var _ = require('underscore');
-
 var update = require('../bin/update.js');
 
-//  all regions are present
-
-// prices are numbers
-
-// every region has at least 10 instance types
-
-// make a very simple fake response fixture
-
-tape.skip('getResponse', function(assert) {
+tape('getResponse succeeds', function(assert) {
     var method = 'file';
-    var address = './fixtures/response.test.json';
+    var address = './apiResponse.json';
 
-    assert.end();
-})
+    update.getResponse(method, address, function(err, res) {
+        if (res) var resSuccess = res.includes('Success');
+        assert.equal(resSuccess, true, 'getResponse succeeds with good file input');
+        assert.end();
+    });
+});
 
+tape('getResponse fails', function(assert) {
+    update.getResponse('nope', 'fake', function(err, res) {
+        if (err) var hasError = true;
+        assert.equal(hasError, true, 'getResponse fails with bad input');
+        assert.end();
+    });
+});
 
-    // get a price
+// updates mapping.json
+tape('createMapping', function(assert) {
+    var response = JSON.stringify(require('./fixtures/response.test.json'));
+    var output = '/tmp/test.json';
+    var result = update.createMapping(response, output, function(err, res) {
+        var contents = JSON.parse(fs.readFileSync(output, 'utf8'));
+        var expected = JSON.parse(JSON.stringify(require('./fixtures/mapping.test.json')));
+        assert.deepEqual(contents, expected, 'createMapping should map an API response');
+        fs.unlinkSync(output);
+        assert.end();
+    });
+});
+
+// get a price
 tape('getPrice', function(assert) {
     var response = JSON.parse(JSON.stringify(require('./fixtures/response.test.json')));
     var testSKU = 'DQ578CGN99KG6ECF';
@@ -31,16 +46,15 @@ tape('getPrice', function(assert) {
     assert.end();
 });
 
-    // format a mapping
+// format a mapping
 tape('formatMap', function(assert) {
     var unformattedMap = JSON.parse(JSON.stringify(require('./fixtures/unformattedMap.test.json')));
     var formattedMap = update.formatMap(unformattedMap);
-    var emptyObject = {}
-    assert.equal(Object.keys(formattedMap).length, 12, 'mapping should have the right number of regions');
+    var regions = JSON.parse(JSON.stringify(require('./fixtures/regions.test.json')))
+    var price = 0.743;
+
+    assert.equal(Object.keys(formattedMap).length, regions.length, 'mapping should have the right number of regions');
     assert.equal(Object.keys(formattedMap['us-west-2']).length, 0, 'mapping shouldn\'t have extra instances');
-    assert.equal(formattedMap['ap-south-1']['m4.2xlarge'], 0.743, 'mapping should have correct price');
+    assert.equal(formattedMap['ap-south-1']['m4.2xlarge'], price, 'mapping should have correct price');
     assert.end();
-})
-
-    // test final output
-
+});

@@ -1,4 +1,4 @@
-![pricePigeon](./pricePigeon.jpg)
+![price-pigeon](./price-pigeon.jpg)
 
 #### Price Pigeon
 

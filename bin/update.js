@@ -59,5 +59,3 @@ function createMapping(response, output, callback) {
     fs.writeFileSync(output, JSON.stringify(mapping, null, 2));
     return callback(null, 'Success - updated ' + output + '!');
 };
-
-

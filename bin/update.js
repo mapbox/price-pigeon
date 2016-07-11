@@ -9,9 +9,11 @@ var output = 'mapping.json';
 if (!module.parent) {
     getResponse(null, null, function(err, res) {
         if (err) throw err;
+        if (res) console.log(res);
     });
 }
 
+// TODO: ditch 'file' input method, spoof api call instead
 // Make API call or read from file
 module.exports.getResponse = getResponse;
 function getResponse(method, address, callback) {
@@ -23,11 +25,12 @@ function getResponse(method, address, callback) {
     // method = 'file';
     // address =  './apiResponse.json';
 
+    // try/catchify?
     if (method === 'url') {
         // Get API response
-        request(address, function(error, response, body) {
-            if (error) {
-                throw err;
+        request(address, function(err, response, body) {
+            if (err) {
+                return callback(err);
             } else {
                 response = response.body;
                 createMapping(response, output, callback);
@@ -37,14 +40,12 @@ function getResponse(method, address, callback) {
         // read saved api response from file
         fs.readFile(address, function(err, buffer) {
             if (err) {
-                throw err;
+                return callback(err);
             } else {
                 response = buffer;
                 createMapping(response, output, callback);
             };
         });
-    } else {
-        return callback('getResponse takes 3 parameters: \'file\' or \'url\', a path or address, and a callback.');
     };
 };
 

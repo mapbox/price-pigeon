@@ -9,7 +9,6 @@ var output = 'mapping.json';
 if (!module.parent) {
     getResponse(null, null, function(err, res) {
         if (err) throw err;
-        if (res) console.log(res);
     });
 }
 
@@ -26,7 +25,6 @@ function getResponse(method, address, callback) {
 
     if (method === 'url') {
         // Get API response
-        console.log('requesting price data from AWS...');
         request(address, function(error, response, body) {
             if (error) {
                 throw err;
@@ -37,7 +35,6 @@ function getResponse(method, address, callback) {
         });
     } else if (method === 'file') {
         // read saved api response from file
-        console.log('reading response from file...');
         fs.readFile(address, function(err, buffer) {
             if (err) {
                 throw err;
@@ -157,26 +154,3 @@ function formatMap(parsedResponse) {
 
     return mapping;
 }
-
-/*
-Notes
-
-need: sku, attributes: location, instanceType, operatingSystem
-    check that it has these attrs...
-        ...because some things don't have operating systems: "productFamily" : "IP Address", "Data Transfer", "Dedicated Host", etc
-    list/dictionary of excluded regions, families, types?
-
-
-function getInfo(response, product) {
-    var region = product.attributes.location;
-    var instanceType = product.attributes.instanceType;
-    var sku = product.sku;
-
-    var info = {
-        'sku': sku,
-        'region': region,
-        'instanceType': instanceType
-    };
-    return info;
-}
-*/

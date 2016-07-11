@@ -17,7 +17,7 @@ if (!module.parent) {
 // TODO: ditch 'file' input method, spoof api call instead
 // Make API call or read from file
 module.exports.getResponse = getResponse;
-function getResponse(method, address, callback) {
+function getResponse(method, address) {
     var response;
     method = method || 'url';
     address = address || 'https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/index.json';
@@ -31,7 +31,7 @@ function getResponse(method, address, callback) {
         // Get API response
         request(address, function(err, response, body) {
             if (err) {
-                return callback(err);
+                throw new Error('bad request');
             } else {
                 response = response.body;
                 createMapping(response, output, callback);
@@ -41,10 +41,10 @@ function getResponse(method, address, callback) {
         // read saved api response from file
         fs.readFile(address, function(err, buffer) {
             if (err) {
-                return callback(err);
+                throw new Error('bad request');
             } else {
                 response = buffer;
-                createMapping(response, output, callback);
+                createMapping(response, output);
             };
         });
     };
@@ -52,10 +52,9 @@ function getResponse(method, address, callback) {
 
 // main function; takes api response and writes mapping to file
 module.exports.createMapping = createMapping;
-function createMapping(response, output, callback) {
+function createMapping(response, output) {
     var parsedResponse = lib.parseResponse(response);
     var mapping = lib.formatMap(parsedResponse);
 
     fs.writeFileSync(output, JSON.stringify(mapping, null, 2));
-    return callback(null, 'Success - updated ' + output + '!');
 };

@@ -17,6 +17,3 @@ function runUpdate() {
         fs.writeFileSync(output, JSON.stringify(mapping, null, 2));
     });
 }
-
-
-

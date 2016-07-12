@@ -8,53 +8,15 @@ var lib = require('../lib/lib.js');
 var output = 'mapping.json';
 
 if (!module.parent) {
-    getResponse(null, null, function(err, res) {
-        if (err) throw err;
-        if (res) console.log(res);
+    runUpdate();
+}
+
+function runUpdate() {
+    lib.getResponse(null, null, function(err, response) {
+        var mapping = lib.createMapping(response, output);
+        fs.writeFileSync(output, JSON.stringify(mapping, null, 2));
     });
 }
 
-// TODO: ditch 'file' input method, spoof api call instead
-// Make API call or read from file
-module.exports.getResponse = getResponse;
-function getResponse(method, address) {
-    var response;
-    method = method || 'url';
-    address = address || 'https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/index.json';
 
-    // // comment in to use saved api response for developement
-    method = 'file';
-    address =  './apiResponse.json';
 
-    // try/catchify?
-    if (method === 'url') {
-        // Get API response
-        request(address, function(err, response, body) {
-            if (err) {
-                throw new Error('bad request');
-            } else {
-                response = response.body;
-                createMapping(response, output, callback);
-            };
-        });
-    } else if (method === 'file') {
-        // read saved api response from file
-        fs.readFile(address, function(err, buffer) {
-            if (err) {
-                throw new Error('bad request');
-            } else {
-                response = buffer;
-                createMapping(response, output);
-            };
-        });
-    };
-};
-
-// main function; takes api response and writes mapping to file
-module.exports.createMapping = createMapping;
-function createMapping(response, output) {
-    var parsedResponse = lib.parseResponse(response);
-    var mapping = lib.formatMap(parsedResponse);
-
-    fs.writeFileSync(output, JSON.stringify(mapping, null, 2));
-};

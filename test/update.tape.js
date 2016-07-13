@@ -29,10 +29,10 @@ tape('createMapping', function(assert) {
 // get a price
 tape('getPrice', function(assert) {
     var response = JSON.parse(JSON.stringify(require('./fixtures/response.test.json')));
-    var testSKU = 'DQ578CGN99KG6ECF';
-    var expectedPrice = 4.931;
+    var testSKU = 'A67CJDV9B3YBP6N6';
+    var expectedPrice = 2.6;
     var actualPrice = lib.getPrice(response, testSKU);
-    assert.equal(typeof(actualPrice), 'number', 'price should be a number');
+    assert.equal(typeof(actualPrice), 'number', 'getPrice should return a number');
     assert.equal(actualPrice, expectedPrice, 'getPrice should get the correct price');
     assert.end();
 });
@@ -41,11 +41,9 @@ tape('getPrice', function(assert) {
 tape('formatMap', function(assert) {
     var unformattedMap = JSON.parse(JSON.stringify(require('./fixtures/unformattedMap.test.json')));
     var formattedMap = lib.formatMap(unformattedMap);
-    var regions = JSON.parse(JSON.stringify(require('./fixtures/regions.test.json')))
-    var price = 0.743;
+    var price = 2.6;
 
-    assert.equal(Object.keys(formattedMap).length, regions.length, 'mapping should have the right number of regions');
-    assert.equal(Object.keys(formattedMap['us-west-2']).length, 0, 'mapping shouldn\'t have extra instances');
-    assert.equal(formattedMap['ap-south-1']['m4.2xlarge'], price, 'mapping should have correct price');
+    assert.equal(Object.keys(formattedMap).length, 3, 'mapping shouldn\'t have extra instances');
+    assert.equal(formattedMap['g2.8xlarge']['price'], price, 'mapping should have correct price');
     assert.end();
 });

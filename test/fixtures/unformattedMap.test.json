@@ -1,10 +1,21 @@
-{ 
-  "KXFXRWTJMG3UXJFE": 
-   { "sku": "KXFXRWTJMG3UXJFE",
-     "instanceType": "m4.2xlarge",
-     "price": 0.743 },
-  "RDXNGJU5DRW4G5ZK": 
-   { "sku": "RDXNGJU5DRW4G5ZK",
-     "instanceType": "c3.large",
-     "price": 0 }
+{ "A67CJDV9B3YBP6N6": 
+   { "sku": "A67CJDV9B3YBP6N6",
+     "instanceType": "g2.8xlarge",
+     "price": 2.6 },
+  "PCKG82PCYPSHD6AF": 
+   { "sku": "PCKG82PCYPSHD6AF",
+     "instanceType": "c3.xlarge",
+     "price": 0.263 },
+  "UNB4R4KS4XXHQFD2": 
+   { "sku": "UNB4R4KS4XXHQFD2",
+     "instanceType": "c4.8xlarge",
+     "price": 1.675 },
+  "9G23QA9CK3NU3BRY": 
+   { "sku": "9G23QA9CK3NU3BRY",
+     "instanceType": "c4.8xlarge",
+     "price": 1.675 },
+  "46ZVWU6WX68NZCE7": 
+   { "sku": "46ZVWU6WX68NZCE7",
+     "instanceType": "c4.8xlarge",
+     "price": 2.195 }
  }

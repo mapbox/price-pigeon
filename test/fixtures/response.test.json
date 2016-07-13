@@ -5,173 +5,66 @@
   "version" : "20160628000628",
   "publicationDate" : "2016-06-28T00:06:28Z",
   "products" : {
-    "DQ578CGN99KG6ECF" : {
-      "sku" : "DQ578CGN99KG6ECF",
-      "productFamily" : "Compute Instance",
-      "attributes" : {
-        "servicecode" : "AmazonEC2",
-        "location" : "US East (N. Virginia)",
-        "locationType" : "AWS Region",
-        "instanceType" : "hs1.8xlarge",
-        "currentGeneration" : "No",
-        "instanceFamily" : "Storage optimized",
-        "vcpu" : "17",
-        "physicalProcessor" : "Intel Xeon E5-2650",
-        "clockSpeed" : "2 GHz",
-        "memory" : "117 GiB",
-        "storage" : "24 x 2000",
-        "networkPerformance" : "10 Gigabit",
-        "processorArchitecture" : "64-bit",
-        "tenancy" : "Shared",
-        "operatingSystem" : "Windows",
-        "licenseModel" : "License Included",
-        "usagetype" : "BoxUsage:hs1.8xlarge",
-        "operation" : "RunInstances:0002",
-        "preInstalledSw" : "NA"
-      }
-    },
-    "76V3SF2FJC3ZR3GH" : {
-      "sku" : "76V3SF2FJC3ZR3GH",
-      "productFamily" : "Compute Instance",
-      "attributes" : {
-        "servicecode" : "AmazonEC2",
-        "location" : "Asia Pacific (Mumbai)",
-        "locationType" : "AWS Region",
-        "instanceType" : "d2.4xlarge",
-        "currentGeneration" : "Yes",
-        "instanceFamily" : "Storage optimized",
-        "vcpu" : "16",
-        "physicalProcessor" : "Intel Xeon E5-2676v3 (Haswell)",
-        "clockSpeed" : "2.4 GHz",
-        "memory" : "122 GiB",
-        "storage" : "12 x 2000 HDD",
-        "networkPerformance" : "High",
-        "processorArchitecture" : "64-bit",
-        "tenancy" : "Host",
-        "operatingSystem" : "Windows",
-        "licenseModel" : "License Included",
-        "usagetype" : "APS3-HostBoxUsage:d2.4xlarge",
-        "operation" : "RunInstances:0002",
-        "enhancedNetworkingSupported" : "Yes",
-        "preInstalledSw" : "NA",
-        "processorFeatures" : "Intel AVX; Intel AVX2; Intel Turbo"
-      }
-    },
-    "G2N9F3PVUVK8ZTGP" : {
-      "sku" : "G2N9F3PVUVK8ZTGP",
+    "62FC35XQAFQXEUHP" : {
+      "sku" : "62FC35XQAFQXEUHP",
       "productFamily" : "Compute Instance",
       "attributes" : {
         "servicecode" : "AmazonEC2",
         "location" : "Asia Pacific (Seoul)",
         "locationType" : "AWS Region",
-        "instanceType" : "i2.xlarge",
+        "instanceType" : "c3.2xlarge",
         "currentGeneration" : "Yes",
-        "instanceFamily" : "Storage optimized",
-        "vcpu" : "4",
-        "physicalProcessor" : "Intel Xeon E5-2670 v2 (Ivy Bridge)",
-        "clockSpeed" : "2.5 GHz",
-        "memory" : "30.5 GiB",
-        "storage" : "1 x 800 SSD",
-        "networkPerformance" : "Moderate",
-        "processorArchitecture" : "64-bit",
-        "tenancy" : "Host",
-        "operatingSystem" : "Windows",
-        "licenseModel" : "License Included",
-        "usagetype" : "APN2-HostBoxUsage:i2.xlarge",
-        "operation" : "RunInstances:0102",
-        "enhancedNetworkingSupported" : "Yes",
-        "preInstalledSw" : "SQL Server Enterprise",
-        "processorFeatures" : "Intel AVX; Intel Turbo"
-      }
-    },
-    "FBZZ2TKXWWY5HZRX" : {
-      "sku" : "FBZZ2TKXWWY5HZRX",
-      "productFamily" : "Compute Instance",
-      "attributes" : {
-        "servicecode" : "AmazonEC2",
-        "location" : "Asia Pacific (Seoul)",
-        "locationType" : "AWS Region",
-        "instanceType" : "i2.4xlarge",
-        "currentGeneration" : "Yes",
-        "instanceFamily" : "Storage optimized",
-        "vcpu" : "16",
-        "physicalProcessor" : "Intel Xeon E5-2670 v2 (Ivy Bridge)",
-        "clockSpeed" : "2.5 GHz",
-        "memory" : "122 GiB",
-        "storage" : "4 x 800 SSD",
-        "networkPerformance" : "High",
-        "processorArchitecture" : "64-bit",
-        "tenancy" : "Dedicated",
-        "operatingSystem" : "SUSE",
-        "licenseModel" : "No License required",
-        "usagetype" : "APN2-DedicatedUsage:i2.4xlarge",
-        "operation" : "RunInstances:000g",
-        "enhancedNetworkingSupported" : "Yes",
-        "preInstalledSw" : "NA",
-        "processorFeatures" : "Intel AVX; Intel Turbo"
-      }
-    },
-    "KZMNEJ8BK92H85RK" : {
-      "sku" : "KZMNEJ8BK92H85RK",
-      "productFamily" : "Compute Instance",
-      "attributes" : {
-        "servicecode" : "AmazonEC2",
-        "location" : "Asia Pacific (Mumbai)",
-        "locationType" : "AWS Region",
-        "instanceType" : "i2.4xlarge",
-        "currentGeneration" : "Yes",
-        "instanceFamily" : "Storage optimized",
-        "vcpu" : "16",
-        "physicalProcessor" : "Intel Xeon E5-2670 v2 (Ivy Bridge)",
-        "clockSpeed" : "2.5 GHz",
-        "memory" : "122 GiB",
-        "storage" : "4 x 800 SSD",
-        "networkPerformance" : "High",
-        "processorArchitecture" : "64-bit",
-        "tenancy" : "Shared",
-        "operatingSystem" : "Windows",
-        "licenseModel" : "License Included",
-        "usagetype" : "APS3-BoxUsage:i2.4xlarge",
-        "operation" : "RunInstances:0202",
-        "enhancedNetworkingSupported" : "Yes",
-        "preInstalledSw" : "SQL Web",
-        "processorFeatures" : "Intel AVX; Intel Turbo"
-      }
-    },
-    "KXFXRWTJMG3UXJFE" : {
-      "sku" : "KXFXRWTJMG3UXJFE",
-      "productFamily" : "Compute Instance",
-      "attributes" : {
-        "servicecode" : "AmazonEC2",
-        "location" : "Asia Pacific (Mumbai)",
-        "locationType" : "AWS Region",
-        "instanceType" : "m4.2xlarge",
-        "currentGeneration" : "Yes",
-        "instanceFamily" : "General purpose",
+        "instanceFamily" : "Compute optimized",
         "vcpu" : "8",
-        "physicalProcessor" : "Intel Xeon E5-2676 v3 (Haswell)",
-        "clockSpeed" : "2.4 GHz",
-        "memory" : "32 GiB",
-        "storage" : "EBS only",
+        "physicalProcessor" : "Intel Xeon E5-2680 v2 (Ivy Bridge)",
+        "clockSpeed" : "2.8 GHz",
+        "memory" : "15 GiB",
+        "storage" : "2 x 80 SSD",
         "networkPerformance" : "High",
         "processorArchitecture" : "64-bit",
         "tenancy" : "Dedicated",
         "operatingSystem" : "Linux",
         "licenseModel" : "No License required",
-        "usagetype" : "APS3-DedicatedUsage:m4.2xlarge",
+        "usagetype" : "APN2-DedicatedUsage:c3.2xlarge",
         "operation" : "RunInstances",
-        "dedicatedEbsThroughput" : "1000 Mbps",
         "enhancedNetworkingSupported" : "Yes",
         "preInstalledSw" : "NA",
-        "processorFeatures" : "Intel AVX; Intel AVX2; Intel Turbo"
+        "processorFeatures" : "Intel AVX; Intel Turbo"
       }
     },
-    "RDXNGJU5DRW4G5ZK" : {
-      "sku" : "RDXNGJU5DRW4G5ZK",
+    "A67CJDV9B3YBP6N6" : {
+      "sku" : "A67CJDV9B3YBP6N6",
       "productFamily" : "Compute Instance",
       "attributes" : {
         "servicecode" : "AmazonEC2",
-        "location" : "South America (Sao Paulo)",
+        "location" : "US East (N. Virginia)",
+        "locationType" : "AWS Region",
+        "instanceType" : "g2.8xlarge",
+        "currentGeneration" : "Yes",
+        "instanceFamily" : "GPU instance",
+        "vcpu" : "32",
+        "physicalProcessor" : "Intel Xeon E5-2670 (Sandy Bridge)",
+        "clockSpeed" : "2.6 GHz",
+        "memory" : "60 GiB",
+        "storage" : "2 x 120 SSD",
+        "networkPerformance" : "10 Gigabit",
+        "processorArchitecture" : "64-bit",
+        "tenancy" : "Shared",
+        "operatingSystem" : "Linux",
+        "licenseModel" : "No License required",
+        "usagetype" : "BoxUsage:g2.8xlarge",
+        "operation" : "RunInstances",
+        "gpu" : "4",
+        "preInstalledSw" : "NA",
+        "processorFeatures" : "Intel AVX; Intel Turbo"
+      }
+    },
+    "M9FGZXCRJNV6KKRJ" : {
+      "sku" : "M9FGZXCRJNV6KKRJ",
+      "productFamily" : "Compute Instance",
+      "attributes" : {
+        "servicecode" : "AmazonEC2",
+        "location" : "Asia Pacific (Tokyo)",
         "locationType" : "AWS Region",
         "instanceType" : "c3.large",
         "currentGeneration" : "Yes",
@@ -183,73 +76,144 @@
         "storage" : "2 x 16 SSD",
         "networkPerformance" : "Moderate",
         "processorArchitecture" : "32-bit or 64-bit",
-        "tenancy" : "Host",
+        "tenancy" : "Dedicated",
         "operatingSystem" : "Linux",
         "licenseModel" : "No License required",
-        "usagetype" : "SAE1-HostBoxUsage:c3.large",
+        "usagetype" : "APN1-DedicatedUsage:c3.large",
         "operation" : "RunInstances",
         "enhancedNetworkingSupported" : "Yes",
         "preInstalledSw" : "NA",
         "processorFeatures" : "Intel AVX; Intel Turbo"
       }
     },
-    "VS37GF2NSDTQVYJ5" : {
-      "sku" : "VS37GF2NSDTQVYJ5",
+    "PCKG82PCYPSHD6AF" : {
+      "sku" : "PCKG82PCYPSHD6AF",
       "productFamily" : "Compute Instance",
       "attributes" : {
         "servicecode" : "AmazonEC2",
-        "location" : "EU (Ireland)",
+        "location" : "US West (N. California)",
         "locationType" : "AWS Region",
-        "instanceType" : "i2.4xlarge",
+        "instanceType" : "c3.xlarge",
         "currentGeneration" : "Yes",
-        "instanceFamily" : "Storage optimized",
-        "vcpu" : "16",
-        "physicalProcessor" : "Intel Xeon E5-2670 v2 (Ivy Bridge)",
-        "clockSpeed" : "2.5 GHz",
-        "memory" : "122 GiB",
-        "storage" : "4 x 800 SSD",
-        "networkPerformance" : "High",
+        "instanceFamily" : "Compute optimized",
+        "vcpu" : "4",
+        "physicalProcessor" : "Intel Xeon E5-2680 v2 (Ivy Bridge)",
+        "clockSpeed" : "2.8 GHz",
+        "memory" : "7.5 GiB",
+        "storage" : "2 x 40 SSD",
+        "networkPerformance" : "Moderate",
         "processorArchitecture" : "64-bit",
-        "tenancy" : "Host",
-        "operatingSystem" : "RHEL",
+        "tenancy" : "Dedicated",
+        "operatingSystem" : "Linux",
         "licenseModel" : "No License required",
-        "usagetype" : "EU-HostBoxUsage:i2.4xlarge",
-        "operation" : "RunInstances:0010",
+        "usagetype" : "USW1-DedicatedUsage:c3.xlarge",
+        "operation" : "RunInstances",
         "enhancedNetworkingSupported" : "Yes",
         "preInstalledSw" : "NA",
         "processorFeatures" : "Intel AVX; Intel Turbo"
       }
     },
-    "M6F5RBA4GFRVEDDN" : {
-      "sku" : "M6F5RBA4GFRVEDDN",
-      "productFamily" : "IP Address",
+    "UNB4R4KS4XXHQFD2" : {
+      "sku" : "UNB4R4KS4XXHQFD2",
+      "productFamily" : "Compute Instance",
       "attributes" : {
         "servicecode" : "AmazonEC2",
-        "location" : "US West (N. California)",
+        "location" : "US West (Oregon)",
         "locationType" : "AWS Region",
-        "group" : "ElasticIP:Address",
-        "groupDescription" : "Elastic IP address attached to a running instance",
-        "usagetype" : "USW1-ElasticIP:IdleAddress",
-        "operation" : ""
+        "instanceType" : "c4.8xlarge",
+        "currentGeneration" : "Yes",
+        "instanceFamily" : "Compute optimized",
+        "vcpu" : "36",
+        "physicalProcessor" : "Intel Xeon E5-2666 v3 (Haswell)",
+        "clockSpeed" : "2.9 GHz",
+        "memory" : "60 GiB",
+        "storage" : "EBS only",
+        "networkPerformance" : "10 Gigabit",
+        "processorArchitecture" : "64-bit",
+        "tenancy" : "Shared",
+        "operatingSystem" : "Linux",
+        "licenseModel" : "No License required",
+        "usagetype" : "USW2-BoxUsage:c4.8xlarge",
+        "operation" : "RunInstances",
+        "dedicatedEbsThroughput" : "4000 Mbps",
+        "enhancedNetworkingSupported" : "Yes",
+        "preInstalledSw" : "NA",
+        "processorFeatures" : "Intel AVX; Intel AVX2; Intel Turbo"
+      }
+    },
+    "9G23QA9CK3NU3BRY" : {
+      "sku" : "9G23QA9CK3NU3BRY",
+      "productFamily" : "Compute Instance",
+      "attributes" : {
+        "servicecode" : "AmazonEC2",
+        "location" : "US East (N. Virginia)",
+        "locationType" : "AWS Region",
+        "instanceType" : "c4.8xlarge",
+        "currentGeneration" : "Yes",
+        "instanceFamily" : "Compute optimized",
+        "vcpu" : "36",
+        "physicalProcessor" : "Intel Xeon E5-2666 v3 (Haswell)",
+        "clockSpeed" : "2.9 GHz",
+        "memory" : "60 GiB",
+        "storage" : "EBS only",
+        "networkPerformance" : "10 Gigabit",
+        "processorArchitecture" : "64-bit",
+        "tenancy" : "Shared",
+        "operatingSystem" : "Linux",
+        "licenseModel" : "No License required",
+        "usagetype" : "BoxUsage:c4.8xlarge",
+        "operation" : "RunInstances",
+        "dedicatedEbsThroughput" : "4000 Mbps",
+        "enhancedNetworkingSupported" : "Yes",
+        "preInstalledSw" : "NA",
+        "processorFeatures" : "Intel AVX; Intel AVX2; Intel Turbo"
+      }
+    },
+    "46ZVWU6WX68NZCE7" : {
+      "sku" : "46ZVWU6WX68NZCE7",
+      "productFamily" : "Compute Instance",
+      "attributes" : {
+        "servicecode" : "AmazonEC2",
+        "location" : "Asia Pacific (Sydney)",
+        "locationType" : "AWS Region",
+        "instanceType" : "c4.8xlarge",
+        "currentGeneration" : "Yes",
+        "instanceFamily" : "Compute optimized",
+        "vcpu" : "36",
+        "physicalProcessor" : "Intel Xeon E5-2666 v3 (Haswell)",
+        "clockSpeed" : "2.9 GHz",
+        "memory" : "60 GiB",
+        "storage" : "EBS only",
+        "networkPerformance" : "10 Gigabit",
+        "processorArchitecture" : "64-bit",
+        "tenancy" : "Shared",
+        "operatingSystem" : "Linux",
+        "licenseModel" : "No License required",
+        "usagetype" : "APS2-BoxUsage:c4.8xlarge",
+        "operation" : "RunInstances",
+        "dedicatedEbsThroughput" : "4000 Mbps",
+        "enhancedNetworkingSupported" : "Yes",
+        "preInstalledSw" : "NA",
+        "processorFeatures" : "Intel AVX; Intel AVX2; Intel Turbo"
       }
     }
   },
   "terms" : {
     "OnDemand" : {
-      "76V3SF2FJC3ZR3GH" : {
-        "76V3SF2FJC3ZR3GH.JRTCKXETXF" : {
+      "62FC35XQAFQXEUHP" : {
+        "62FC35XQAFQXEUHP.JRTCKXETXF" : {
           "offerTermCode" : "JRTCKXETXF",
-          "sku" : "76V3SF2FJC3ZR3GH",
+          "sku" : "62FC35XQAFQXEUHP",
           "effectiveDate" : "2016-06-01T00:00:00Z",
           "priceDimensions" : {
-            "76V3SF2FJC3ZR3GH.JRTCKXETXF.6YS6EN2CT7" : {
-              "rateCode" : "76V3SF2FJC3ZR3GH.JRTCKXETXF.6YS6EN2CT7",
-              "description" : "$0.000 per Windows d2.4xlarge Dedicated Host Instance hour",
+            "62FC35XQAFQXEUHP.JRTCKXETXF.6YS6EN2CT7" : {
+              "rateCode" : "62FC35XQAFQXEUHP.JRTCKXETXF.6YS6EN2CT7",
+              "description" : "$0.506 per Dedicated Linux c3.2xlarge Instance Hour",
               "beginRange" : "0",
               "endRange" : "Inf",
               "unit" : "Hrs",
               "pricePerUnit" : {
-                "USD" : "0.0000000000"
+                "USD" : "0.5058900000"
               },
               "appliesTo" : [ ]
             }
@@ -257,20 +221,20 @@
           "termAttributes" : { }
         }
       },
-      "DQ578CGN99KG6ECF" : {
-        "DQ578CGN99KG6ECF.JRTCKXETXF" : {
+      "A67CJDV9B3YBP6N6" : {
+        "A67CJDV9B3YBP6N6.JRTCKXETXF" : {
           "offerTermCode" : "JRTCKXETXF",
-          "sku" : "DQ578CGN99KG6ECF",
+          "sku" : "A67CJDV9B3YBP6N6",
           "effectiveDate" : "2016-06-01T00:00:00Z",
           "priceDimensions" : {
-            "DQ578CGN99KG6ECF.JRTCKXETXF.6YS6EN2CT7" : {
-              "rateCode" : "DQ578CGN99KG6ECF.JRTCKXETXF.6YS6EN2CT7",
-              "description" : "$4.931 per On Demand Windows hs1.8xlarge Instance Hour",
+            "A67CJDV9B3YBP6N6.JRTCKXETXF.6YS6EN2CT7" : {
+              "rateCode" : "A67CJDV9B3YBP6N6.JRTCKXETXF.6YS6EN2CT7",
+              "description" : "$2.6 per On Demand Linux g2.8xlarge Instance Hour",
               "beginRange" : "0",
               "endRange" : "Inf",
               "unit" : "Hrs",
               "pricePerUnit" : {
-                "USD" : "4.9310000000"
+                "USD" : "2.6000000000"
               },
               "appliesTo" : [ ]
             }
@@ -278,20 +242,20 @@
           "termAttributes" : { }
         }
       },
-      "G2N9F3PVUVK8ZTGP" : {
-        "G2N9F3PVUVK8ZTGP.JRTCKXETXF" : {
+      "M9FGZXCRJNV6KKRJ" : {
+        "M9FGZXCRJNV6KKRJ.JRTCKXETXF" : {
           "offerTermCode" : "JRTCKXETXF",
-          "sku" : "G2N9F3PVUVK8ZTGP",
+          "sku" : "M9FGZXCRJNV6KKRJ",
           "effectiveDate" : "2016-06-01T00:00:00Z",
           "priceDimensions" : {
-            "G2N9F3PVUVK8ZTGP.JRTCKXETXF.6YS6EN2CT7" : {
-              "rateCode" : "G2N9F3PVUVK8ZTGP.JRTCKXETXF.6YS6EN2CT7",
-              "description" : "$0.000 per Windows with SQL Server Enterprise i2.xlarge Dedicated Host Instance hour",
+            "M9FGZXCRJNV6KKRJ.JRTCKXETXF.6YS6EN2CT7" : {
+              "rateCode" : "M9FGZXCRJNV6KKRJ.JRTCKXETXF.6YS6EN2CT7",
+              "description" : "$0.141 per Dedicated Linux c3.large Instance Hour",
               "beginRange" : "0",
               "endRange" : "Inf",
               "unit" : "Hrs",
               "pricePerUnit" : {
-                "USD" : "0.0000000000"
+                "USD" : "0.1410000000"
               },
               "appliesTo" : [ ]
             }
@@ -299,20 +263,20 @@
           "termAttributes" : { }
         }
       },
-      "FBZZ2TKXWWY5HZRX" : {
-        "FBZZ2TKXWWY5HZRX.JRTCKXETXF" : {
+      "PCKG82PCYPSHD6AF" : {
+        "PCKG82PCYPSHD6AF.JRTCKXETXF" : {
           "offerTermCode" : "JRTCKXETXF",
-          "sku" : "FBZZ2TKXWWY5HZRX",
+          "sku" : "PCKG82PCYPSHD6AF",
           "effectiveDate" : "2016-06-01T00:00:00Z",
           "priceDimensions" : {
-            "FBZZ2TKXWWY5HZRX.JRTCKXETXF.6YS6EN2CT7" : {
-              "rateCode" : "FBZZ2TKXWWY5HZRX.JRTCKXETXF.6YS6EN2CT7",
-              "description" : "$4.502 per Dedicated SUSE i2.4xlarge Instance Hour",
+            "PCKG82PCYPSHD6AF.JRTCKXETXF.6YS6EN2CT7" : {
+              "rateCode" : "PCKG82PCYPSHD6AF.JRTCKXETXF.6YS6EN2CT7",
+              "description" : "$0.263 per Dedicated Linux c3.xlarge Instance Hour",
               "beginRange" : "0",
               "endRange" : "Inf",
               "unit" : "Hrs",
               "pricePerUnit" : {
-                "USD" : "4.5022000000"
+                "USD" : "0.2630000000"
               },
               "appliesTo" : [ ]
             }
@@ -320,20 +284,20 @@
           "termAttributes" : { }
         }
       },
-      "KZMNEJ8BK92H85RK" : {
-        "KZMNEJ8BK92H85RK.JRTCKXETXF" : {
+      "UNB4R4KS4XXHQFD2" : {
+        "UNB4R4KS4XXHQFD2.JRTCKXETXF" : {
           "offerTermCode" : "JRTCKXETXF",
-          "sku" : "KZMNEJ8BK92H85RK",
+          "sku" : "UNB4R4KS4XXHQFD2",
           "effectiveDate" : "2016-06-01T00:00:00Z",
           "priceDimensions" : {
-            "KZMNEJ8BK92H85RK.JRTCKXETXF.6YS6EN2CT7" : {
-              "rateCode" : "KZMNEJ8BK92H85RK.JRTCKXETXF.6YS6EN2CT7",
-              "description" : "$4.895 per On Demand Windows with SQL Web i2.4xlarge Instance Hour",
+            "UNB4R4KS4XXHQFD2.JRTCKXETXF.6YS6EN2CT7" : {
+              "rateCode" : "UNB4R4KS4XXHQFD2.JRTCKXETXF.6YS6EN2CT7",
+              "description" : "$1.675 per On Demand Linux c4.8xlarge Instance Hour",
               "beginRange" : "0",
               "endRange" : "Inf",
               "unit" : "Hrs",
               "pricePerUnit" : {
-                "USD" : "4.8950000000"
+                "USD" : "1.6750000000"
               },
               "appliesTo" : [ ]
             }
@@ -341,20 +305,20 @@
           "termAttributes" : { }
         }
       },
-      "KXFXRWTJMG3UXJFE" : {
-        "KXFXRWTJMG3UXJFE.JRTCKXETXF" : {
+      "9G23QA9CK3NU3BRY" : {
+        "9G23QA9CK3NU3BRY.JRTCKXETXF" : {
           "offerTermCode" : "JRTCKXETXF",
-          "sku" : "KXFXRWTJMG3UXJFE",
+          "sku" : "9G23QA9CK3NU3BRY",
           "effectiveDate" : "2016-06-01T00:00:00Z",
           "priceDimensions" : {
-            "KXFXRWTJMG3UXJFE.JRTCKXETXF.6YS6EN2CT7" : {
-              "rateCode" : "KXFXRWTJMG3UXJFE.JRTCKXETXF.6YS6EN2CT7",
-              "description" : "$0.743 per Dedicated Usage Linux m4.2xlarge Instance Hour",
+            "9G23QA9CK3NU3BRY.JRTCKXETXF.6YS6EN2CT7" : {
+              "rateCode" : "9G23QA9CK3NU3BRY.JRTCKXETXF.6YS6EN2CT7",
+              "description" : "$1.675 per On Demand Linux c4.8xlarge Instance Hour",
               "beginRange" : "0",
               "endRange" : "Inf",
               "unit" : "Hrs",
               "pricePerUnit" : {
-                "USD" : "0.7430000000"
+                "USD" : "1.6750000000"
               },
               "appliesTo" : [ ]
             }
@@ -362,94 +326,20 @@
           "termAttributes" : { }
         }
       },
-      "RDXNGJU5DRW4G5ZK" : {
-        "RDXNGJU5DRW4G5ZK.JRTCKXETXF" : {
+      "46ZVWU6WX68NZCE7" : {
+        "46ZVWU6WX68NZCE7.JRTCKXETXF" : {
           "offerTermCode" : "JRTCKXETXF",
-          "sku" : "RDXNGJU5DRW4G5ZK",
+          "sku" : "46ZVWU6WX68NZCE7",
           "effectiveDate" : "2016-06-01T00:00:00Z",
           "priceDimensions" : {
-            "RDXNGJU5DRW4G5ZK.JRTCKXETXF.6YS6EN2CT7" : {
-              "rateCode" : "RDXNGJU5DRW4G5ZK.JRTCKXETXF.6YS6EN2CT7",
-              "description" : "$0.000 per Linux c3.large Dedicated Host Instance hour",
+            "46ZVWU6WX68NZCE7.JRTCKXETXF.6YS6EN2CT7" : {
+              "rateCode" : "46ZVWU6WX68NZCE7.JRTCKXETXF.6YS6EN2CT7",
+              "description" : "$2.195 per On Demand Linux c4.8xlarge Instance Hour",
               "beginRange" : "0",
               "endRange" : "Inf",
               "unit" : "Hrs",
               "pricePerUnit" : {
-                "USD" : "0.0000000000"
-              },
-              "appliesTo" : [ ]
-            }
-          },
-          "termAttributes" : { }
-        }
-      },
-      "VS37GF2NSDTQVYJ5" : {
-        "VS37GF2NSDTQVYJ5.JRTCKXETXF" : {
-          "offerTermCode" : "JRTCKXETXF",
-          "sku" : "VS37GF2NSDTQVYJ5",
-          "effectiveDate" : "2016-06-01T00:00:00Z",
-          "priceDimensions" : {
-            "VS37GF2NSDTQVYJ5.JRTCKXETXF.6YS6EN2CT7" : {
-              "rateCode" : "VS37GF2NSDTQVYJ5.JRTCKXETXF.6YS6EN2CT7",
-              "description" : "$0.000 per RHEL i2.4xlarge Dedicated Host Instance hour",
-              "beginRange" : "0",
-              "endRange" : "Inf",
-              "unit" : "Hrs",
-              "pricePerUnit" : {
-                "USD" : "0.0000000000"
-              },
-              "appliesTo" : [ ]
-            }
-          },
-          "termAttributes" : { }
-        }
-      },
-      "M6F5RBA4GFRVEDDN" : {
-        "M6F5RBA4GFRVEDDN.JRTCKXETXF" : {
-          "offerTermCode" : "JRTCKXETXF",
-          "sku" : "M6F5RBA4GFRVEDDN",
-          "effectiveDate" : "2016-06-01T00:00:00Z",
-          "priceDimensions" : {
-            "M6F5RBA4GFRVEDDN.JRTCKXETXF.JTU8TKNAMW" : {
-              "rateCode" : "M6F5RBA4GFRVEDDN.JRTCKXETXF.JTU8TKNAMW",
-              "description" : "$0.005 per Elastic IP address not attached to a running instance per hour (prorated)",
-              "beginRange" : "1",
-              "endRange" : "Inf",
-              "unit" : "Hrs",
-              "pricePerUnit" : {
-                "USD" : "0.0050000000"
-              },
-              "appliesTo" : [ ]
-            },
-            "M6F5RBA4GFRVEDDN.JRTCKXETXF.8EEUB22XNJ" : {
-              "rateCode" : "M6F5RBA4GFRVEDDN.JRTCKXETXF.8EEUB22XNJ",
-              "description" : "$0.00 per Elastic IP address not attached to a running instance for the first hour",
-              "beginRange" : "0",
-              "endRange" : "1",
-              "unit" : "Hrs",
-              "pricePerUnit" : {
-                "USD" : "0.0000000000"
-              },
-              "appliesTo" : [ ]
-            }
-          },
-          "termAttributes" : { }
-        }
-      },
-      "QPN2H3V39T9H38UC" : {
-        "QPN2H3V39T9H38UC.JRTCKXETXF" : {
-          "offerTermCode" : "JRTCKXETXF",
-          "sku" : "QPN2H3V39T9H38UC",
-          "effectiveDate" : "2016-06-01T00:00:00Z",
-          "priceDimensions" : {
-            "QPN2H3V39T9H38UC.JRTCKXETXF.6YS6EN2CT7" : {
-              "rateCode" : "QPN2H3V39T9H38UC.JRTCKXETXF.6YS6EN2CT7",
-              "description" : "$0.000 per Windows with SQL Web m3.xlarge Dedicated Host Instance hour",
-              "beginRange" : "0",
-              "endRange" : "Inf",
-              "unit" : "Hrs",
-              "pricePerUnit" : {
-                "USD" : "0.0000000000"
+                "USD" : "2.1950000000"
               },
               "appliesTo" : [ ]
             }
@@ -457,7 +347,7 @@
           "termAttributes" : { }
         }
       }
-    },
-    "Reserved" : {}
+    }
   }
 }
+

@@ -5,13 +5,13 @@ var lib = require('../lib/lib.js');
 
 tape('getResponse', function(assert) {
     var method = 'file';
-    var address = './apiResponse.json';
+    var address = './test/fixtures/response.test.json';
 
     lib.getResponse(method, address, function(err, res) {
         if (res) {
             var info = JSON.parse(res);
             var actualVersion = info['formatVersion'];
-            var expectedVersion = 'v1.0';
+            var expectedVersion = 'v1.test';
         };
         assert.equal(actualVersion, expectedVersion, 'getResponse succeeds with good file input');
     });

@@ -1,5 +1,5 @@
 {
-  "formatVersion" : "v1.0",
+  "formatVersion" : "v1.test",
   "disclaimer" : "This pricing list is for informational purposes only. All prices are subject to the additional terms included in the pricing pages on http://aws.amazon.com. All Free Tier prices are also subject to the terms included at https://aws.amazon.com/free/",
   "offerCode" : "AmazonEC2",
   "version" : "20160628000628",

@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/mapbox/price-pigeon.svg?style=svg&circle-token=e74befa20ccba29ae651dfef1a46a827e3e75f23)](https://circleci.com/gh/mapbox/price-pigeon)
+
 ![price-pigeon](./price-pigeon.jpg)
 
 #### Price Pigeon

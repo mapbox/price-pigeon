@@ -1,10 +1,7 @@
 var _ = require('underscore');
 var fs = require('fs');
 var tape = require('tape');
-
-var update = require('../bin/update.js');
 var lib = require('../lib/lib.js');
-
 
 tape('getResponse', function(assert) {
     var method = 'file';

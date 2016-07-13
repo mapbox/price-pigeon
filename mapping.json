@@ -1,0 +1,167 @@
+{
+  "g2.8xlarge": {
+    "price": 3.592
+  },
+  "c3.xlarge": {
+    "price": 0.292
+  },
+  "c4.8xlarge": {
+    "price": 2.195
+  },
+  "cr1.8xlarge": {
+    "price": 3.75
+  },
+  "r3.large": {
+    "price": 0.219
+  },
+  "m2.2xlarge": {
+    "price": 0.651
+  },
+  "x1.32xlarge": {
+    "price": 19.341
+  },
+  "r3.2xlarge": {
+    "price": 0.878
+  },
+  "m1.xlarge": {
+    "price": 0.514
+  },
+  "m4.xlarge": {
+    "price": 0.37
+  },
+  "m3.2xlarge": {
+    "price": 0.82
+  },
+  "t2.medium": {
+    "price": 0.08
+  },
+  "c4.xlarge": {
+    "price": 0.302
+  },
+  "c3.large": {
+    "price": 0.145
+  },
+  "m2.4xlarge": {
+    "price": 1.301
+  },
+  "m3.xlarge": {
+    "price": 0.409
+  },
+  "m2.xlarge": {
+    "price": 0.326
+  },
+  "cc2.8xlarge": {
+    "price": 2.25
+  },
+  "t2.large": {
+    "price": 0.16
+  },
+  "t2.nano": {
+    "price": 0.01
+  },
+  "d2.xlarge": {
+    "price": 0.957
+  },
+  "i2.8xlarge": {
+    "price": 8.14
+  },
+  "c4.large": {
+    "price": 0.15
+  },
+  "m3.medium": {
+    "price": 0.102
+  },
+  "c4.4xlarge": {
+    "price": 1.207
+  },
+  "m4.4xlarge": {
+    "price": 1.48
+  },
+  "d2.4xlarge": {
+    "price": 3.828
+  },
+  "r3.xlarge": {
+    "price": 0.439
+  },
+  "c3.4xlarge": {
+    "price": 1.164
+  },
+  "i2.xlarge": {
+    "price": 1.12
+  },
+  "c3.2xlarge": {
+    "price": 0.582
+  },
+  "t2.small": {
+    "price": 0.04
+  },
+  "m1.large": {
+    "price": 0.256
+  },
+  "m4.large": {
+    "price": 0.185
+  },
+  "t1.micro": {
+    "price": 0.025
+  },
+  "r3.8xlarge": {
+    "price": 3.192
+  },
+  "c1.xlarge": {
+    "price": 0.721
+  },
+  "m4.10xlarge": {
+    "price": 3.363
+  },
+  "c4.2xlarge": {
+    "price": 0.604
+  },
+  "m1.small": {
+    "price": 0.064
+  },
+  "d2.8xlarge": {
+    "price": 6.96
+  },
+  "m1.medium": {
+    "price": 0.129
+  },
+  "m3.large": {
+    "price": 0.205
+  },
+  "i2.2xlarge": {
+    "price": 2.239
+  },
+  "hs1.8xlarge": {
+    "price": 5.57
+  },
+  "i2.4xlarge": {
+    "price": 4.477
+  },
+  "c1.medium": {
+    "price": 0.18
+  },
+  "m4.2xlarge": {
+    "price": 0.74
+  },
+  "d2.2xlarge": {
+    "price": 1.914
+  },
+  "hi1.4xlarge": {
+    "price": 3.1
+  },
+  "c3.8xlarge": {
+    "price": 2.117
+  },
+  "r3.4xlarge": {
+    "price": 1.756
+  },
+  "t2.micro": {
+    "price": 0.02
+  },
+  "g2.2xlarge": {
+    "price": 0.988
+  },
+  "cg1.4xlarge": {
+    "price": 2.36
+  }
+}

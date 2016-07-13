@@ -18,9 +18,10 @@ tape('getResponse', function(assert) {
     lib.getResponse(null, null, function(err, res) {
         if (res) {
             var info = JSON.parse(res);
-            var sameVersion = info['formatVersion'].includes('v1');
+            var actualVersion = info['formatVersion'];
+            var expectedVersion = 'v1.0';
         };
-        assert.equal(sameVersion, true, 'getResponse gets API response with correct version');
+        assert.equal(actualVersion, expectedVersion, 'getResponse gets API response with correct version');
     });
     assert.end();
 });

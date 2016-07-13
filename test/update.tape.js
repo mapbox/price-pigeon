@@ -5,20 +5,30 @@ var tape = require('tape');
 var update = require('../bin/update.js');
 var lib = require('../lib/lib.js');
 
-// // make a mapping from file input
-// tape('getResponse succeeds', function(assert) {
-//     var method = 'file';
-//     var address = './apiResponse.json';
 
-//     update.getResponse(method, address, function(err, res) {
-//         if (res) var resSuccess = res.includes('Success');
-//         assert.equal(resSuccess, true, 'getResponse succeeds with good file input');
-//         assert.end();
-//     });
-// });
+tape('getResponse', function(assert) {
+    var method = 'file';
+    var address = './apiResponse.json';
+
+    lib.getResponse(method, address, function(err, res) {
+        if (res) {
+            var info = JSON.parse(res);
+            var sameVersion = info['formatVersion'].includes('v1');
+        };
+        assert.equal(sameVersion, true, 'getResponse succeeds with good file input');
+    });
+    lib.getResponse(null, null, function(err, res) {
+        if (res) {
+            var info = JSON.parse(res);
+            var sameVersion = info['formatVersion'].includes('v1');
+        };
+        assert.equal(sameVersion, true, 'getResponse gets API response with correct version');
+    });
+    assert.end();
+});
 
 // update mapping.json
-tape('createMapping', function(assert) {
+tape.skip('createMapping', function(assert) {
     var response = JSON.stringify(require('./fixtures/response.test.json'));
     var result = lib.createMapping(response);
     var expected = JSON.parse(JSON.stringify(require('./fixtures/mapping.test.json')));
@@ -27,7 +37,7 @@ tape('createMapping', function(assert) {
 });
 
 // get a price
-tape('getPrice', function(assert) {
+tape.skip('getPrice', function(assert) {
     var response = JSON.parse(JSON.stringify(require('./fixtures/response.test.json')));
     var testSKU = 'A67CJDV9B3YBP6N6';
     var expectedPrice = 2.6;
@@ -38,7 +48,7 @@ tape('getPrice', function(assert) {
 });
 
 // format a mapping
-tape('formatMap', function(assert) {
+tape.skip('formatMap', function(assert) {
     var unformattedMap = JSON.parse(JSON.stringify(require('./fixtures/unformattedMap.test.json')));
     var formattedMap = lib.formatMap(unformattedMap);
     var price = 2.6;

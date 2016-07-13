@@ -1,24 +1,43 @@
-var mapping = require('../map2.json');
+var mapping = require('../mapping.json');
 
 module.exports = {
   "AWSTemplateFormatVersion" : "2010-09-09",
 
-  "Description" : "Oh Hello",
+  "Description" : "price pigeon",
   "Mappings" :   {
-    "Species" : {
-        "mammal"      : { "Name" : "kangaroo"},
-        "reptile"      : { "Name" : "python"}
+    "Prices" : mapping,
+    "RegionMap": {
+      "us-east-1": {
+          "64": "ami-7b89cc11"
+      },
+      "eu-west-1": {
+          "64": "ami-6514ce16"
+      },
+      "eu-central-1": {
+          "64": "ami-02392b6e"
+      },
+      "us-west-1": {
+          "64": "ami-809df3e0"
+      },
+      "us-west-2": {
+          "64": "ami-d24c5cb3"
+      },
+      "ap-southeast-1": {
+          "64": "ami-f78c4d94"
+      },
+      "ap-northeast-1": {
+          "64": "ami-eb0a2985"
+      },
+      "ap-southeast-2": {
+          "64": "ami-a25a03c1"
+      },
+      "sa-east-1": {
+          "64": "ami-9f4cf6f3"
+      }
     },
-    "Prices" : mapping
   },
 
   "Parameters" : {
-    "Animal" : {
-        "Type" : "String",
-        "Default" : "mammal",
-        "AllowedValues" : ["mammal", "reptile", "bird"],
-        "Description" : "Type of animal."
-    },
     "Region" : {
         "Type" : "String",
         "Default" : "us-west-1",
@@ -37,8 +56,18 @@ module.exports = {
     "Topic": {
       "Type" : "AWS::SNS::Topic",
       "Properties" : {
-        "TopicName" : {
-            "Fn::FindInMap" : ["Prices", {"Ref" : "InstanceType"}, "name"]
+        "TopicName" : "Flitter"
+      }
+    },
+    "LaunchConfiguration" : {
+      "Type" : "AWS::AutoScaling::LaunchConfiguration",
+      "Properties" : {
+        "ImageId" : {
+          "Fn::FindInMap" : ["RegionMap", {"Ref" : "AWS::Region"}, "64"]
+        },
+        "InstanceType" : {"Ref" : "InstanceType"},
+        "SpotPrice" : {
+          "Fn::FindInMap" : ["Prices", {"Ref" : "InstanceType"}, "price"]
         }
       }
     }

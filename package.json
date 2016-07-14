@@ -14,6 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/mapbox/price-pigeon.git"
   },
+  "private": "true",
   "license": "ISC",
   "author": "Mapbox",
   "dependencies": {

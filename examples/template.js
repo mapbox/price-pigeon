@@ -1,11 +1,11 @@
-var mapping = require('../mapping.json');
+var priceMap = require('@mapbox/price-pigeon');
 
 module.exports = {
   "AWSTemplateFormatVersion" : "2010-09-09",
 
   "Description" : "price pigeon",
   "Mappings" :   {
-    "Prices" : mapping,
+    "Prices" : priceMap,
     "RegionMap": {
       "us-east-1": {
           "64": "ami-7b89cc11"

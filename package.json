@@ -1,8 +1,8 @@
 {
   "name": "@mapbox/price-pigeon",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Fetch AWS OnDemand prices for easy import into other modules",
-  "main": "index.json",
+  "main": "priceMap.json",
   "scripts": {
     "update": "bin/update.js",
     "test": "tape test/*.js"

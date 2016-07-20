@@ -5,7 +5,7 @@ var fs = require('fs');
 var request = require('request');
 var lib = require('../lib/lib.js');
 
-var output = 'index.json';
+var output = 'priceMap.json';
 
 if (!module.parent) {
     runUpdate();

@@ -29,7 +29,8 @@ npm install @mapbox/price-pigeon --save
 
 - [Optional] Update the price map to use the most recent OnDemand prices:
 ```
-$ npm run update
+cd node_modules/price-pigeon
+npm run update
 ```
 - Add your `InstanceType` to the template `Parameters` if it isn't there already. The template will use a [function](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-findinmap.html) that refers to `InstanceType` to get the correct price. Here's an example:
 ```

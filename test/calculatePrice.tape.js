@@ -10,12 +10,12 @@ tape('calculatePrice', function(assert) {
     var expectedHalfMap = {'apple': {'price': 5},
                         'm3.large': {'price': 0.175}
                       };
-    var fullPercent = 1;
-    var halfPercent = 0.5;
-    var actualFullMap = lib.calculatePrice(originalMap, fullPercent);
-    assert.equal(actualFullMap, originalMap, 'calculatePrice keeps original map for 100% prices');
+    var fullRatio = 1;
+    var halfRatio = 0.5;
+    var actualFullMap = lib.calculatePrice(originalMap, fullRatio);
+    assert.equal(actualFullMap, originalMap, 'calculatePrice keeps original map for full price maps');
 
-    var actualHalfMap = lib.calculatePrice(originalMap, halfPercent);
+    var actualHalfMap = lib.calculatePrice(originalMap, halfRatio);
     assert.deepEqual(actualHalfMap, expectedHalfMap, 'calculatePrice changes prices correctly');
     assert.end();
 });

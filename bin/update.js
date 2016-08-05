@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
-var _ = require('underscore');
 var fs = require('fs');
-var request = require('request');
 var lib = require('../lib/lib.js');
 
 var output = 'priceMap.json';

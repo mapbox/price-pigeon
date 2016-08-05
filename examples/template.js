@@ -1,4 +1,7 @@
-var priceMap = require('@mapbox/price-pigeon');
+// require the price mapping function
+var priceMapper = require('@mapbox/price-pigeon').priceMapper;
+// get a price map with half cost prices for each instance
+var priceMap = priceMapper(0.5);
 
 module.exports = {
   "AWSTemplateFormatVersion" : "2010-09-09",

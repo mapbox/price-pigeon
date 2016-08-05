@@ -1,7 +1,16 @@
 var _ = require('underscore');
 var fs = require('fs');
 var lib = require('../lib/lib.js');
+var priceMapper = require('../priceMapper.js').priceMapper;
 var tape = require('tape');
+
+tape('priceMapper', function(assert) {
+    var quarterPriceMap = priceMapper(0.25);
+    var quarterPrice = 0.02;
+    var priceToCheck = quarterPriceMap['t2.medium']['price'];
+    assert.equal(priceToCheck, quarterPrice, 'PriceMapper completes the price change');
+    assert.end();
+});
 
 tape('calculatePrice', function(assert) {
     var originalMap = {'apple': {'price': 10},

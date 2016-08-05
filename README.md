@@ -6,7 +6,7 @@
 
 The answer to [inconsistent spot price bids](https://github.com/mapbox/spotswap-cfn/issues/22).
 
-Uses the [AWS Price List API](https://aws.amazon.com/blogs/aws/new-aws-price-list-api/) to generate a mapping of OnDemand prices by instance type. This mapping can be referenced during instance creation to make accurate spot bid prices.
+Uses the [AWS Price List API](https://aws.amazon.com/blogs/aws/new-aws-price-list-api/) to generate a mapping of OnDemand prices by instance type. This mapping can be used during instance creation to make accurate spot bid prices.
 
 *Note: The price supplied is the highest OnDemand price for that instance type across the following regions:
 ```
@@ -47,7 +47,12 @@ npm run update
 - Include the price map directly in your CloudFormation `template.js` (check out `price-pigeon/examples/` for a sample template):
 
 ```
-var priceMap = require('@mapbox/price-pigeon');
+// require the price-mapping function
+var priceMapper = require('@mapbox/price-pigeon').priceMapper;
+// get a price map with 50% off prices
+var priceMap = priceMapper(0.5);
+// If you want to use the actual price, you don't need to supply a ratio:
+priceMap = priceMapper();
 
 // Don't forget to add the rest of your template to this stub!
 module.exports = {

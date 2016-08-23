@@ -17,7 +17,6 @@
   "license": "ISC",
   "author": "Mapbox",
   "dependencies": {
-    "fs": "0.0.2",
     "request": "^2.72.0",
     "underscore": "^1.8.3"
   },

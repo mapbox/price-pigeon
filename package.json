@@ -8,7 +8,7 @@
     "test": "tape test/*.js"
   },
   "bin": {
-    "update": "bin/update.js"
+    "price-pigeon-update": "bin/update.js"
   },
   "repository": {
     "type": "git",

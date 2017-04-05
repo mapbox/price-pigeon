@@ -6,7 +6,7 @@ var tape = require('tape');
 
 tape('priceMapper', function(assert) {
     var ratio = 0.25;
-    var fullPrice = 0.08;
+    var fullPrice = 0.064;
 
     var ratioPriceMap = priceMapper(ratio);
     var ratioPrice = ratioPriceMap['t2.medium']['price'];
@@ -37,6 +37,6 @@ tape('calculatePrice', function(assert) {
 
     var actualHalfMap = lib.calculatePrice(originalMap, halfRatio);
     assert.deepEqual(actualHalfMap, expectedHalfMap, 'calculatePrice changes prices correctly');
-    
+
     assert.end();
 });

@@ -16,11 +16,13 @@
   },
   "license": "ISC",
   "author": "Mapbox",
+  "contributors": ["Kai Dalgleish <kai@kaidalgleish.io>"],
   "dependencies": {
     "request": "^2.72.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
     "tape": "^4.5.1"
-  }
+  },
+  "license": "BSD-2-Clause"
 }

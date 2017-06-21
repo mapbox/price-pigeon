@@ -1,6 +1,7 @@
 [![CircleCI](https://circleci.com/gh/mapbox/price-pigeon.svg?style=svg&circle-token=e74befa20ccba29ae651dfef1a46a827e3e75f23)](https://circleci.com/gh/mapbox/price-pigeon)
 
 ![price-pigeon](./price-pigeon.jpg)
+> illustration by [Joseph Wilkins](https://brightonillustrators.co.uk/portfolios/Joseph_Wilkins)
 
 #### Price Pigeon
 
@@ -20,9 +21,7 @@ Uses the [AWS Price List API](https://aws.amazon.com/blogs/aws/new-aws-price-lis
 ```
 
 #### Using Price Pigeon
-- If your project isn't already set up to use private `@mapbox`-scoped modules, follow the [instructions here](https://github.com/mapbox/platform/blob/master/docs/npm.md#add-a-private-module-as-a-dependency-of-another-project).
-
-- If you already use private modules, install `price-pigeon` and add to your `package.json`:
+- install `price-pigeon` and add to your `package.json`:
 ```
 npm install @mapbox/price-pigeon --save
 ```

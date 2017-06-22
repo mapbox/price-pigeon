@@ -5,7 +5,7 @@
 
 #### Price Pigeon
 
-The answer to [inconsistent spot price bids](https://github.com/mapbox/spotswap-cfn/issues/22).
+The answer to inconsistent spot price bids.
 
 Uses the [AWS Price List API](https://aws.amazon.com/blogs/aws/new-aws-price-list-api/) to generate a mapping of OnDemand prices by instance type. This mapping can be used during instance creation to make accurate spot bid prices.
 
@@ -29,7 +29,7 @@ npm install @mapbox/price-pigeon --save
 - [Optional] Update the price map to use the most recent OnDemand prices:
 ```
 cd node_modules/price-pigeon
-npm run update
+npm run price-pigeon-update
 ```
 - Add your `InstanceType` to the template `Parameters` if it isn't there already. The template will use a [function](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-findinmap.html) that refers to `InstanceType` to get the correct price. Here's an example:
 ```
@@ -78,11 +78,4 @@ module.exports = {
     }
   }
 };
-```
-
-
-- Create your new stack:
-
-```
-$ cfn-update -t [templateFile] -r [region] -n [nameOfNewStack]
 ```
